@@ -1,0 +1,18 @@
+basePath: /api
+host: www.qrinvitecard.com
+info:
+  contact: {}
+  description: This is the documentation for the QR Invite Card API
+  title: QR Invite Card API
+  version: 0.0.1
+paths: {}
+securityDefinitions:
+  APIKeyAuth:
+    in: header
+    name: api-key
+    type: apiKey
+  JWTAuth:
+    in: header
+    name: Authorization
+    type: apiKey
+swagger: "2.0"

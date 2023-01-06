@@ -10,8 +10,8 @@ import (
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
 
-	"github.com/plankiton/hubla-challenge/cmd/server/internal/config"
-	"github.com/plankiton/hubla-challenge/pkg/api"
+	"github.com/plankiton/qrpage/cmd/server/internal/config"
+	"github.com/plankiton/qrpage/pkg/api"
 )
 
 func main() {
