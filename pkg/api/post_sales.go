@@ -5,7 +5,7 @@ import (
 
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/gommon/log"
-	"github.com/plankiton/hubla-challenge/pkg/db"
+	"github.com/plankiton/qrpage/pkg/db"
 )
 
 func (h *Handler) PostSales(c echo.Context) error {
