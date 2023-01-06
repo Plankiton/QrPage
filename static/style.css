@@ -9,10 +9,6 @@ body {
     background: #FFF;
 }
 
-h1 {
-    font-size: 50pt;
-}
-
 h1, h2, h3 {
     text-align: center;
     border-radius: 10px;

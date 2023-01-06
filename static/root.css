@@ -11,3 +11,16 @@ html, body {
 section {
     max-width: 800px;
 }
+
+h1 {
+    font-size: 20pt;
+}
+
+h2 {
+  font-size: 15pt;
+}
+
+h3 {
+  font-size: 13pt;
+}
+
