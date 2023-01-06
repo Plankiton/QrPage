@@ -1,16 +1,16 @@
 default: dev
 
 ensure:
-	bash scripts/ensure.sh
+	sh scripts/ensure.sh
 
 up_db:
-	bash scripts/up_db.sh
+	sh scripts/up_db.sh
 
 down_db:
-	bash scripts/down_db.sh
+	sh scripts/down_db.sh
 
 dev: ensure up_db
-	bash scripts/dev.sh
+	sh scripts/dev.sh
 
 prod: ensure up_db
 
