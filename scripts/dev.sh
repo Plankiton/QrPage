@@ -4,30 +4,22 @@ then
     exit 1
 fi
 
-DB_USER="${DB_USER-hubla}"
-DB_NAME="${DB_NAME-hubla}"
-DB_PASS="${DB_PASS-supersecret}"
-
-if ! docker container inspect hubla_db > /dev/null 2>&1
+if ! command -v go &> /dev/null
 then
-    echo "- Starting a postgres on port 5432..."
-    docker run --name hubla_db -d -p 5432:5432 \
-        -e POSTGRES_USER="$DB_USER" \
-        -e POSTGRES_PASSWORD="$DB_PASS" \
-        -e POSTGRES_DB="$DB_NAME" \
-        postgres:13.3
-    echo ""
+    echo "MISSING DEPENDENCY: go is not installed"
+    exit 1
 fi
-
-docker start hubla_db > /dev/null
-docker exec -i hubla_db psql -U "$DB_USER" -d "$DB_NAME" < ./pkg/db/sql/init.sql
 
 echo "- Waiting for postgres to be ready..."
 RETRIES=10
-until docker run -it --rm --link hubla_db:pg postgres:13.3 psql "postgres://$DB_USER:$DB_PASS@pg:5432/$DB_NAME" -c "select 1" > /dev/null || [ $RETRIES -eq 0 ]; do
+until docker run -it --rm --link qrincard_db:pg postgres:13.3 psql "postgres://$DB_USER:$DB_PASS@pg:5432/$DB_NAME" -c "select 1" > /dev/null || [ $RETRIES -eq 0 ]; do
     echo "    $((RETRIES--)) remaining attempts..."
     sleep 1;
 done
+
+# echo "- Seeding dev database"
+# docker exec -i maagizo_db psql -U postgres -d maagizo < ./pkg/http/rest/testapi/temp_seed.sql
+# echo ""
 
 if ! air -h > /dev/null 2>&1
 then

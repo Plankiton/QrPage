@@ -1,7 +1,15 @@
-all: dev
+default: dev
 
 ensure:
 	bash scripts/ensure.sh
 
-dev: ensure
+up_db:
+	bash scripts/up_db.sh
+
+down_db:
+	bash scripts/down_db.sh
+
+dev: ensure up_db
 	bash scripts/dev.sh
+
+.PHONY: ensure build test lint dev swagger clean resetdb
