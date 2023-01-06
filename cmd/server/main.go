@@ -52,6 +52,6 @@ func createEchoServer(ctx context.Context, config config.Config) (*http.Server, 
 	api.SetupEndpoints(e, repos)
 	return &http.Server{
 		Handler: e,
-		Addr:    ":2345",
+		Addr:    fmt.Sprintf(":%s", config.Port),
 	}, nil
 }
