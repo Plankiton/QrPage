@@ -1,0 +1,45 @@
+img {
+    height: 100%;
+}
+h2 {
+    background: #313131;
+    border-radius: 5px;
+    padding: 10px;
+    width: 100%
+}
+
+input[type=text] {
+    border-radius: 3px;
+    border: none;
+    height: 30px;
+    width: 100%;
+    background: #212121;
+    text-align: center;
+}
+
+input[type=submit] {
+    border-radius: 3px;
+    border: none;
+    padding: 5px;
+    height: 30px;
+    width: 100%;
+    background: #212121;
+    text-align: center;
+}
+input[type=submit]:hover {
+    background: #313131;
+}
+
+p {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #101010;
+}
+p.title {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+    background: #313131;
+}

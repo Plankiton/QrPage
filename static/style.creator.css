@@ -1,0 +1,45 @@
+img {
+    height: 100%;
+}
+h2 {
+    background: #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    width: 100%
+}
+
+input[type=text] {
+    border-radius: 3px;
+    border: none;
+    height: 30px;
+    width: 100%;
+    background: #eee;
+    text-align: center;
+}
+
+input[type=submit] {
+    border-radius: 3px;
+    border: none;
+    padding: 5px;
+    height: 30px;
+    width: 100%;
+    background: #eee;
+    text-align: center;
+}
+input[type=submit]:hover {
+    background: #ddd;
+}
+
+p {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #fff;
+}
+p.title {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+    background: #ddd;
+}
