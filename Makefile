@@ -12,4 +12,6 @@ down_db:
 dev: ensure up_db
 	bash scripts/dev.sh
 
+prod: ensure up_db
+
 .PHONY: ensure build test lint dev swagger clean resetdb

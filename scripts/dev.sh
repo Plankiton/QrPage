@@ -20,6 +20,24 @@ done
 # echo "- Seeding dev database"
 # docker exec -i maagizo_db psql -U postgres -d maagizo < ./pkg/http/rest/testapi/temp_seed.sql
 # echo ""
+#
+
+DB_USER="${DB_USER-qrincard}"
+DB_NAME="${DB_NAME-qrincard}"
+DB_PASS="${DB_PASS-supersecret}"
+
+if ! docker container inspect qrincard_db > /dev/null 2>&1
+then
+    echo "- Starting a postgres on port 5432..."
+    docker run --name qrincard_db -d -p 5432:5432 \
+        -e POSTGRES_USER="$DB_USER" \
+        -e POSTGRES_PASSWORD="$DB_PASS" \
+        -e POSTGRES_DB="$DB_NAME" \
+        postgres:13.3
+    echo ""
+fi
+
+docker start qrincard_db > /dev/null
 
 if ! air -h > /dev/null 2>&1
 then
