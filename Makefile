@@ -1,4 +1,4 @@
-default: dev
+default: run
 
 ensure:
 	sh scripts/ensure.sh
@@ -9,8 +9,11 @@ up_db:
 down_db:
 	sh scripts/down_db.sh
 
-dev: ensure up_db
+dev: 
 	sh scripts/dev.sh
+
+run: ensure dev up_db
+	sh scripts/run.sh
 
 prod: ensure up_db
 
