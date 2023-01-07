@@ -10,9 +10,9 @@ import (
 // @Summary get a invite card by SlugCode
 // @ID get-invite-card-by-slugcode
 // @Produce json
-// @Param id path string true "todo ID"
-// @Success 200 {object}
-// @Failure 404 {object} message
+// @Param SlugCode path string true "SlugCode is a string reference code for a created Invite Card"
+// @Success 200 {object} GetInviteCardPayload
+// @Failure 404 {object} GetInviteCardPayload
 // @Router /api/i/{SlugCode} [get]
 func (h *Handler) GetInviteCard(c echo.Context) error {
 	ctx := c.Request().Context()

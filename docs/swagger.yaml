@@ -1,11 +1,89 @@
 basePath: /api
+definitions:
+  api.GetInviteCardPayload:
+    properties:
+      data:
+        $ref: '#/definitions/db.InviteCard'
+      error:
+        type: string
+    type: object
+  db.BusinessJSON:
+    properties:
+      corp_phrase:
+        type: string
+      description:
+        type: string
+      logo_image:
+        type: string
+      name:
+        type: string
+    type: object
+  db.ContentJSON:
+    properties:
+      background_color:
+        type: string
+      background_image:
+        type: string
+    type: object
+  db.InviteCard:
+    properties:
+      business:
+        $ref: '#/definitions/db.BusinessJSON'
+      business_id:
+        type: string
+      content:
+        $ref: '#/definitions/db.ContentJSON'
+      id:
+        type: string
+      social:
+        $ref: '#/definitions/db.SocialJSON'
+    type: object
+  db.SocialItem:
+    properties:
+      back_link:
+        type: string
+      cover_image:
+        type: string
+      sub_title:
+        type: string
+      title:
+        type: string
+    type: object
+  db.SocialJSON:
+    properties:
+      links:
+        items:
+          $ref: '#/definitions/db.SocialItem'
+        type: array
+    type: object
 host: www.qrinvitecard.com
 info:
   contact: {}
   description: This is the documentation for the QR Invite Card API
   title: QR Invite Card API
   version: 0.0.1
-paths: {}
+paths:
+  /api/i/{SlugCode}:
+    get:
+      operationId: get-invite-card-by-slugcode
+      parameters:
+      - description: SlugCode is a string reference code for a created Invite Card
+        in: path
+        name: SlugCode
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.GetInviteCardPayload'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/api.GetInviteCardPayload'
+      summary: get a invite card by SlugCode
 securityDefinitions:
   APIKeyAuth:
     in: header
