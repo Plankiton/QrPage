@@ -8,7 +8,129 @@
     },
     "host": "www.qrinvitecard.com",
     "basePath": "/api",
-    "paths": {},
+    "paths": {
+        "/api/i/{SlugCode}": {
+            "get": {
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "get a invite card by SlugCode",
+                "operationId": "get-invite-card-by-slugcode",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "SlugCode is a string reference code for a created Invite Card",
+                        "name": "SlugCode",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/api.GetInviteCardPayload"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/api.GetInviteCardPayload"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "api.GetInviteCardPayload": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "$ref": "#/definitions/db.InviteCard"
+                },
+                "error": {
+                    "type": "string"
+                }
+            }
+        },
+        "db.BusinessJSON": {
+            "type": "object",
+            "properties": {
+                "corp_phrase": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "logo_image": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                }
+            }
+        },
+        "db.ContentJSON": {
+            "type": "object",
+            "properties": {
+                "background_color": {
+                    "type": "string"
+                },
+                "background_image": {
+                    "type": "string"
+                }
+            }
+        },
+        "db.InviteCard": {
+            "type": "object",
+            "properties": {
+                "business": {
+                    "$ref": "#/definitions/db.BusinessJSON"
+                },
+                "business_id": {
+                    "type": "string"
+                },
+                "content": {
+                    "$ref": "#/definitions/db.ContentJSON"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "social": {
+                    "$ref": "#/definitions/db.SocialJSON"
+                }
+            }
+        },
+        "db.SocialItem": {
+            "type": "object",
+            "properties": {
+                "back_link": {
+                    "type": "string"
+                },
+                "cover_image": {
+                    "type": "string"
+                },
+                "sub_title": {
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string"
+                }
+            }
+        },
+        "db.SocialJSON": {
+            "type": "object",
+            "properties": {
+                "links": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/db.SocialItem"
+                    }
+                }
+            }
+        }
+    },
     "securityDefinitions": {
         "APIKeyAuth": {
             "type": "apiKey",

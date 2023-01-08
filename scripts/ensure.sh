@@ -11,4 +11,4 @@ then
     curl -sSfL https://raw.githubusercontent.com/cosmtrek/air/master/install.sh | sh -s -- -b $(go env GOPATH)/bin
 fi
 
-swag init -g api.go --dir pkg/api
+swag init -g api.go --dir pkg/api --parseDependency
