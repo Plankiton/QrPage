@@ -16,11 +16,12 @@ type InviteCard struct {
 	ID         uuid.UUID  `json:"id,omitempty"`
 	BusinessId *uuid.UUID `json:"business_id,omitempty"`
 
-	SlugCode, PassCode string `json:"-"`
+	SlugCode string  `json:"-"`
+	PassCode *string `json:"-"`
 
 	Business BusinessJSON `json:"business,omitempty"`
-	Social   SocialJSON   `json:"social,omitempty"`
 	Content  ContentJSON  `json:"content,omitempty"`
+	Social   []SocialJSON `json:"social,omitempty"`
 }
 
 type BusinessJSON struct {
@@ -33,13 +34,11 @@ type BusinessJSON struct {
 type ContentJSON struct {
 	BackgroundImage string `json:"background_image,omitempty"`
 	BackgroundColor string `json:"background_color,omitempty"`
+	Style           string `json:"style,omitempty"`
 }
 
 type SocialJSON struct {
-	Links []SocialItem `json:"links,omitempty"`
-}
-
-type SocialItem struct {
+	Type       string `json:"type,omitempty"`
 	Title      string `json:"title,omitempty"`
 	SubTitle   string `json:"sub_title,omitempty"`
 	BackLink   string `json:"back_link,omitempty"`
