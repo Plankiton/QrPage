@@ -70,7 +70,17 @@ function load(data) {
         <h3>CopyRight &copy; Yaks Souza</h3>
         <p>&lt;yaks.souza@gmail.com&gt;</p>
     </footer>
-</body>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-THSRJY2JDF"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-THSRJY2JDF');
+    </script>
+    </body>
 `;
 
   document.getElementsByTagName("html")[0].innerHTML = html;
